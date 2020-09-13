@@ -102,10 +102,36 @@ class FACODING_CUSTOMIZE:
         return df, result_calc
 
 
-import collections
-dict_counter = dict(collections.Counter(df['age']))
-dict_counter = dict(collections.Counter(df['gender']))
-list_counter = len(collections.Counter(df['gender']))
 
-pd.DataFrame(dict_counter)
-z = pd.DataFrame(dict_counter,columns=['title','href'])
+
+
+
+
+
+
+
+
+
+
+
+########## test
+
+# import pandas as pd
+# import collections
+# dict_counter = dict(collections.Counter(df['age']))
+# dict_counter = dict(collections.Counter(df['gender']))
+# list_counter = len(collections.Counter(df['gender']))
+
+# pd.DataFrame(dict_counter)
+# z = pd.DataFrame(dict_counter,columns=['title','href'])
+
+
+# for k, w in dict_counter.items():
+#     print(k,w)
+
+# d= DICT_SEG_VAR
+# d['age']
+
+# z = list(range(1,len(d['age'])+1))
+# dict(zip(list(range(1,len(d['age'])+1)),d['age']))
+
