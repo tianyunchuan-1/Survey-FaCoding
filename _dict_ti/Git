@@ -1,0 +1,296 @@
+
+【基础操作】
+git remote add origin https://github.com/tianyunchuan-1/Survey-FaCoding.git
+git push -u origin master
+
+
+本地 cd C:\\Users\\tianyunchuan\\iCloudDrive\\Desktop\\_pyCodeSpyder_\\survey\FaCoding\\Lancome
+
+website
+    https://gitforwindows.org/
+
+
+git bash
+
+
+# 设置自己的名字、邮件地址
+$ git config --global user.name "tianyunchuan"
+$ git config --global user.email tianyunchuan@gmail.com
+
+
+# 查看
+$ git config -l
+
+#创建目录
+$ cd C:\\Users\\tianyunchuan\\iCloudDrive\\Desktop\\_win_Trans_mac_\\github
+$ mkdir data-analysis
+$ cd data-analysis/
+
+# 创建版本库
+$ git init
+$ ls -a
+    -->
+        ./  ../  .git/
+
+$ git status
+    -->
+        On branch master
+
+        No commits yet
+
+        nothing to commit (create/copy files and use "git add" to track)
+
+# 创建文件
+$ touch first.txt
+
+$ git status
+    -->
+        On branch master
+
+        No commits yet
+
+        Untracked files:
+          (use "git add <file>..." to include in what will be committed)
+                first.txt
+
+        nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add first.txt
+$ git status
+    -->
+        On branch master
+
+        No commits yet
+
+        Changes to be committed:
+          (use "git rm --cached <file>..." to unstage)
+                new file:   first.txt
+
+
+        tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/Desktop/_win_Trans_mac_/github/data-analysis (master)
+
+$ git commit -m "create file first.txt"
+    -->
+        [master (root-commit) 0ef2507] create file first.txt
+         1 file changed, 0 insertions(+), 0 deletions(-)
+         create mode 100644 first.txt
+
+
+$ git status
+    -->
+        On branch master
+        nothing to commit, working tree clean
+
+$ touch second.txt third.txt
+
+$ git add --all
+$ git status
+    -->
+        On branch master
+        Changes to be committed:
+          (use "git restore --staged <file>..." to unstage)
+                new file:   second.txt
+                new file:   third.txt
+
+$ git commit -m "commit second & third"
+    [master 9ddc4e5] commit second & third
+     2 files changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 second.txt
+     create mode 100644 third.txt
+
+$ git status
+    On branch master
+    nothing to commit, working tree clean
+
+    tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/Desktop/_win_Trans_mac_/github/data-analysis (master)
+    $
+
+$ git log
+    commit 9ddc4e5ae05fb9607d28c19b8ecc5b71964637d3 (HEAD -> master)
+    Author: tianyunchuan <tianyunchuan@gmail.com>
+    Date:   Thu Sep 10 23:16:12 2020 +0800
+
+        commit second & third
+
+    commit 0ef2507120a0c8d0338156852693efad42921495
+    Author: tianyunchuan <tianyunchuan@gmail.com>
+    Date:   Thu Sep 10 23:06:40 2020 +0800
+
+$ git log --summary
+    commit 9ddc4e5ae05fb9607d28c19b8ecc5b71964637d3 (HEAD -> master)
+    Author: tianyunchuan <tianyunchuan@gmail.com>
+    Date:   Thu Sep 10 23:16:12 2020 +0800
+
+        commit second & third
+
+     create mode 100644 second.txt
+     create mode 100644 third.txt
+
+    commit 0ef2507120a0c8d0338156852693efad42921495
+    Author: tianyunchuan <tianyunchuan@gmail.com>
+    Date:   Thu Sep 10 23:06:40 2020 +0800
+
+        create file first.txt
+
+     create mode 100644 first.txt
+
+
+
+
+【github SSH-KEY】
+
+Setting -> SSH and GPG keys
+
+
+本地一个私钥
+github一个公钥
+
+
+
+$ ssh-keygen -t rsa -C "tianyunchuan@gmail.com"
+在本地生成两个文件，路径->
+
+
+复制 本地ssh to github
+
+
+
+
+
+# 测试
+$ ssh -T git@github.com
+
+The authenticity of host 'github.com (13.229.188.59)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,13.229.188.59' (RSA) to the list of known hosts.
+Hi tianyunchuan-1! You've successfully authenticated, but GitHub does not provide shell access.
+
+
+
+【github Repositories】
+
+创建一个新的版本库
+
+
+
+git remote add origin https://github.com/tianyunchuan-1/Ti-202009-01.git
+
+
+$ git push -u origin master
+
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), 623 bytes | 155.00 KiB/s, done.
+Total 7 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/tianyunchuan-1/Ti-202009-01.git
+* [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+
+
+github远端文件更新至本地
+
+
+$ git pull origin master
+
+【文件更新】
+退回上次操作
+
+$ git checkout -- first.txt
+
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (master)
+
+$ cat first.txt
+
+
+$ git reset first.txt
+
+Unstaged changes after reset:
+M       first.txt
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (master)
+
+$ git checkout first.txt
+
+Updated 1 path from the index
+
+
+[ reset HEAD ]
+
+$ git add step_01.txt
+
+$ cat step_01.txt
+
+coding_proc finished
+append two
+
+
+$ git reset HEAD step_01.txt
+
+Unstaged changes after reset:
+M       step_01.txt
+
+$ git checkout -- step_01.txt
+$ cat step_01.txt
+
+coding_proc finished
+
+[ 删除 ]
+
+$ git rm step_01.txt
+
+rm 'step_01.txt'
+
+
+【分支 Branch】
+
+$ git branch proc01
+$ git checkout proc01
+
+Switched to branch 'proc01'
+
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (proc01)
+
+
+$ git add third.txt
+
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (proc01)
+
+$ git status
+
+On branch proc01
+nothing to commit, working tree clean
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (proc01)
+
+$ git commit -m "add proc01"
+
+On branch proc01
+nothing to commit, working tree clean
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (proc01)
+
+$ git checkout master
+
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (master)
+
+$ git merge proc01
+
+Already up to date.
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (master)
+
+$ git branch -d proc01
+
+Deleted branch proc01 (was 4f45dda).
+tianyunchuan@SHLT73-R90JMHZF MINGW64 ~/iCloudDrive/github/data-analysis (master)
+
+$ git push    
+
+Everything up-to-date
+
+【工作流】
+
+
