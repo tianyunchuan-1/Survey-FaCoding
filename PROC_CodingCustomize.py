@@ -26,8 +26,8 @@ class FACODING_CUSTOMIZE:
     
     def get_rawData(self):
         df_raw = pd.read_excel(r'{}\\{}.xlsx'.format(PATH_DATA, self.raw_file_name),keep_default_na=False)
-        if 'valid_on' in list(df_raw.columns):
-            df_raw = df_raw[df_raw['valid_on']==1]
+        if 'valid_sample' in list(df_raw.columns):
+            df_raw = df_raw[df_raw['valid_sample']==1]
 
         df = df_raw[[self.id_col_name, self.question_col_name]]
         
@@ -36,6 +36,7 @@ class FACODING_CUSTOMIZE:
         return df_raw, df
     
     def rawData_seg_append(self, df_raw, df):
+        df['valid_sample'] = df_raw['valid_sample']
         for _s in self.dict_seg_var.keys():
             df[_s]=list(df_raw[_s])
 
@@ -100,38 +101,3 @@ class FACODING_CUSTOMIZE:
         seg_name = self.get_result(df)
         result_calc = self.calc(df, seg_name)
         return df, result_calc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-########## test
-
-# import pandas as pd
-# import collections
-# dict_counter = dict(collections.Counter(df['age']))
-# dict_counter = dict(collections.Counter(df['gender']))
-# list_counter = len(collections.Counter(df['gender']))
-
-# pd.DataFrame(dict_counter)
-# z = pd.DataFrame(dict_counter,columns=['title','href'])
-
-
-# for k, w in dict_counter.items():
-#     print(k,w)
-
-# d= DICT_SEG_VAR
-# d['age']
-
-# z = list(range(1,len(d['age'])+1))
-# dict(zip(list(range(1,len(d['age'])+1)),d['age']))
-

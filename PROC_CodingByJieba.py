@@ -15,7 +15,7 @@
 import numpy as np
 # from snownlp import SnowNLP
 import pandas as pd
-# import re
+import re
 import os
 import jieba
 from wordcloud import WordCloud
@@ -30,24 +30,26 @@ PATH_NEWDICT_STOPWORD = r'{}\_data\_data_global\_NLP_DICT\_dict_ti\\'.format(PAT
 # [初始 Setting] 定义数据路径（读取、保存）
 PATH_DATA = r'{}\_data\data_survey_coding\\'.format(PATH_HEAD)
 
+# 定义原始数据文件名
+RAW_FILE_NAME = '4.2 OE_Message Playback'
+
 # 加载自定义词典  
 jieba.load_userdict(r'{}newdict.txt'.format(PATH_NEWDICT_STOPWORD))   
 
 
 #### ----- coding 生成 excel data, code list -----
-class FACODING_BY_JIEBA:
+class FACODING:
     
-    def __init__(self, raw_file_name, id_col_name, question_col_name, output_kw_num):
-        self.raw_file_name = raw_file_name
-        self.id_col_name = id_col_name
-        self.question_col_name = question_col_name
-        self.output_kw_num = output_kw_num
+    def __init__(self, file_path, question_no, output_word_num):
+        self.file_path = file_path
+        self.question_no = question_no
+        self.output_word_num = output_word_num
         
     
     def get_rawData(self):
-        df_raw = pd.read_excel(r'{}\\{}.xlsx'.format(PATH_DATA, self.raw_file_name),keep_default_na=False)
+        df_raw = pd.read_excel(r'{}\\{}.xlsx'.format(PATH_DATA, RAW_FILE_NAME),keep_default_na=False)
 
-        df = df_raw[[self.id_col_name, self.question_col_name]]
+        df = df_raw[['user id', self.question_no]]
         df.rename(columns={list(df.columns)[1]: 'content', list(df.columns)[0]: 'SAMPLEID'}, inplace=True)
         return df_raw, df
     
@@ -100,8 +102,8 @@ class FACODING_BY_JIEBA:
         fSegStat = fSegStat[fSegStat['计数'] >2]
 #        if len(fSegStat)>=199:     
 #            fSegStat = fSegStat.iloc[:199,:]
-        if len(fSegStat)>=self.output_kw_num:     
-            fSegStat = fSegStat.iloc[:self.output_kw_num,:]
+        if len(fSegStat)>=self.output_word_num:     
+            fSegStat = fSegStat.iloc[:self.output_word_num,:]
         return fSegStat
     
     def proc_wordsToDict(self, fSegStat):
@@ -186,7 +188,7 @@ class FACODING_BY_JIEBA:
 
 if __name__ == '__main__':
     # [Setting] 第一个参数可暂时忽略，第二个参数为题号，第三个参数为选择词频数前n个关键词
-    facoding = FACODING_BY_JIEBA('content',1000)
+    facoding = FACODING('filePath', 'content',1000)
     # df_raw, df, corpos, segmentDataFrame, fSegStat, df_coding, fSegStat_2 = facoding.go()
     df_raw, corpos, segmentDataFrame, df_coding, fSegStat = facoding.go()
     
