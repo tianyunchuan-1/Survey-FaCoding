@@ -191,6 +191,8 @@ To https://github.com/tianyunchuan-1/Ti-202009-01.git
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 
 
+$ git pull --rebase origin master
+$ git push -u origin master
 
 github远端文件更新至本地
 
