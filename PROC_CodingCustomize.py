@@ -3,6 +3,7 @@
 import pandas as pd
 import re
 import os
+import collections
 
 
 # [初始 Setting] 定义PATH_HEAD
@@ -83,6 +84,20 @@ class FACODING_CUSTOMIZE:
             list(result_calc.columns)
             result_calc.rename(columns={list(result_calc.columns)[idx+1]:s}, inplace = True)    
         result_calc.rename(columns={'mean':'Total'}, inplace = True)
+
+
+        
+        d = dict(collections.Counter(df[seg_name]))
+        d['Total'] = sum(d.values())
+        d['key_word'] = 'Base'
+        for idx, s in enumerate(self.dict_seg_var[seg_name]):
+            d[s] = d.pop(idx+1)
+        df_temp = pd.DataFrame.from_dict(d,orient='index').T
+        df_temp.index = ["TTL"]
+        result_calc = pd.concat([result_calc,df_temp],axis=0,ignore_index=False, sort=False)
+        
+        
+
 
         # with pd.ExcelWriter(r'{}\\result_byCustomize.xlsx'.format(PATH_DATA)) as _writer:
         #     # list_sheet_name = ['result_code_list.xlsx','result_data.xlsx']

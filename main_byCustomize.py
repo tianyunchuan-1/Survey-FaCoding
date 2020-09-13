@@ -20,17 +20,6 @@ DICT_SEG_VAR = {
     'gender': ['Male', 'Famale'],      
     }
 
-    # def update_dict_seg_var(self):
-    #     for k, w in self.dict_seg_var.items():
-    #         self.dict_seg_var[k] = dict(zip(list(range(1,len(w)+1)), w))
-    #     dict_seg = self.dict_seg_var
-    #     return dict_seg    
-
-# DICT_SEG_VAR = {
-#     'age': ['Tier1_20-29','Tier1_30-39','Tier2_20-29','Tier2_30-39',],
-#     'gender': ['Male', 'Famale'],      
-#     }
-
 
 ## [Setting 自定义词典，词典的key最终追加列至DF]
 DICT_KW ={
