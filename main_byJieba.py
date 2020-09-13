@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """ CodingByJieba """
+# commit test
 
 import PROC_CodingByJieba
 
