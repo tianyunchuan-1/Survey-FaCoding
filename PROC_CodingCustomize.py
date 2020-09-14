@@ -37,7 +37,8 @@ class FACODING_CUSTOMIZE:
         return df_raw, df
     
     def rawData_seg_append(self, df_raw, df):
-        df['valid_sample'] = df_raw['valid_sample']
+        if 'valid_sample' in list(df_raw.columns):
+            df['valid_sample'] = df_raw['valid_sample']
         for _s in self.dict_seg_var.keys():
             df[_s]=list(df_raw[_s])
 
