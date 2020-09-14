@@ -7,7 +7,9 @@ import collections
 
 
 # [初始 Setting] 定义PATH_HEAD
-PATH_HEAD = r'C:\Users\tianyunchuan\iCloudDrive\Desktop\_pyCodeSpyder_'
+# PATH_HEAD = r'C:\Users\tianyunchuan\iCloudDrive\Desktop\_pyCodeSpyder_'
+PATH_HEAD = r'{}_pyCodeSpyder_'.format(os.getcwd().split('_pyCodeSpyder_')[0])
+
 
 # [初始 Setting] 定义数据路径（读取、保存）
 PATH_DATA = r'{}\_data\data_survey_coding\\'.format(PATH_HEAD)
