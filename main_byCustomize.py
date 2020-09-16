@@ -3,23 +3,27 @@
 
 import PROC_CodingCustomize
 
-RAW_FILE_NAME = '4.2 OE_Message Playback'
-ID_COL_NAME = 'user id'
-QUESTION_COL_NAME = 'content'
+# RAW_FILE_NAME = '4.2 OE_Message Playback'
+# ID_COL_NAME = 'user id'
+# QUESTION_COL_NAME = 'content'
 
-# RAW_FILE_NAME = 'FaCoding_RawSample_00'
-# ID_COL_NAME = 'SAMPLEID'
-# QUESTION_COL_NAME = 'q30fa'
+RAW_FILE_NAME = 'Playback'
+ID_COL_NAME = 'SAMPLEID'
+QUESTION_COL_NAME = 'q23fa'
 
 
 # -*- coding: utf-8 -*-
 """ CodingByCustomize """
 
-DICT_SEG_VAR = {
-    'city age': ['Tier1_20-29','Tier1_30-39','Tier2_20-29','Tier2_30-39',],
-    'gender': ['Male', 'Famale'],      
-    }
+# DICT_SEG_VAR = {
+#     'city age': ['Tier1_20-29','Tier1_30-39','Tier2_20-29','Tier2_30-39',],
+#     'gender': ['Male', 'Famale'],      
+#     }
 
+DICT_SEG_VAR = {
+    'city': ['Tier1_20-29','Tier1_30-39','Tier2_20-29','Tier2_30-39',],
+    'user': ['user', 'no_user'],      
+    }
 
 ## [Setting 自定义词典，词典的key最终追加列至DF]
 DICT_KW ={
@@ -37,4 +41,3 @@ DICT_KW ={
 codingCustomize = PROC_CodingCustomize.FACODING_CUSTOMIZE(RAW_FILE_NAME, ID_COL_NAME, QUESTION_COL_NAME, DICT_SEG_VAR, DICT_KW)
 # df, result_calc = codingCustomize.go
 df, result_calc = codingCustomize.go()
-

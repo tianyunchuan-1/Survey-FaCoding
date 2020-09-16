@@ -108,6 +108,7 @@ class FACODING_CUSTOMIZE:
         # _writer.save()
         # _writer.close()
         result_calc.to_excel(r'{}\\result_Customize_by_{}.xlsx'.format(PATH_DATA,seg_name),sheet_name=seg_name) 
+        df.to_excel(r'{}\\result_raw.xlsx'.format(PATH_DATA),sheet_name=seg_name) 
         return result_calc
 
 
